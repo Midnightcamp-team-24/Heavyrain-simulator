@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.heavyrainsimulator.mission.repository.MissionMapper">
+    <resultMap id="missionResultMap" type="com.example.heavyrainsimulator.mission.entity.MissionEntity" autoMapping="false">
+        <result property="missionNo" column="mission_no"/>
+        <result property="missionName" column="mission_name"/>
+        <result property="missionClear" column="mission_clear"/>
+    </resultMap>
+
+        <select id="failedMission" resultMap="missionResultMap" parameterType="String">
+            SELECT
+                MISSION_NAME
+            FROM TBL_MISSION
+            WHERE MISSION_CLEAR = false
+        </select>
+
+</mapper>
