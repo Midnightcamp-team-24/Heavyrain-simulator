@@ -10,7 +10,7 @@ spring:
       additional-paths: src/main/resources/**, src/main/java/**
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.1.64/mission
+    url: jdbc:mysql://192.168.35.157/missiondb
     username: mission
     password: mission
     hikari:

@@ -30,9 +30,6 @@ public class User {
     @Column(name = "USER_NICKNAME")
     private String userNickname;
 
-    @Column(name = "USER_PASSWORD")
-    private String userPassword;
-
     @Column(name = "CLEAR_INFO")
     private int clear_info;
 
