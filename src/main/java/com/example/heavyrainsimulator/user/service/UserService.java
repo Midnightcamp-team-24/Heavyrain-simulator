@@ -1,12 +1,9 @@
 package com.example.heavyrainsimulator.user.service;
 
-import com.example.heavyrainsimulator.user.dto.UserDTO;
 import com.example.heavyrainsimulator.user.entity.User;
 import com.example.heavyrainsimulator.user.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserService {
@@ -18,7 +15,7 @@ public class UserService {
        this.userRepository = userRepository;
    }
 
-    public User registerUser(String userNickname, String userPassword) {
+    public User registerUser(String userNickname) {
         User existingUser = userRepository.findByUserNickname(userNickname);
         if (existingUser != null) {
 
@@ -26,8 +23,18 @@ public class UserService {
 
         User newUser = new User();
         newUser.setUserNickname(userNickname);
-        newUser.setUserPassword(userPassword);
 
         return userRepository.save(newUser);
+    }
+
+    public User loginUser(String userNickname) {
+
+       User existingUser = userRepository.findByUserNickname(userNickname);
+
+       if(existingUser != null && existingUser.getUserNickname().equals(userNickname)) {
+           return existingUser;
+       }
+
+       return null;
     }
 }
