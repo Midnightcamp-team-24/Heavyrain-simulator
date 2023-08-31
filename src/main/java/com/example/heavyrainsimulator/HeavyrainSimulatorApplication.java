@@ -1,4 +1,4 @@
-package com.example.heavyrain;
+package com.example.heavyrainsimulator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
