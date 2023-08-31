@@ -1,0 +1,30 @@
+server:
+  port: 8888
+  tomcat:
+    accesslog:
+      enabled: false
+
+spring:
+  devtools:
+    restart:
+      additional-paths: src/main/resources/**, src/main/java/**
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.1.64/mission
+    username: mission
+    password: mission
+    hikari:
+      auto-commit: false
+  main:
+    allow-circular-references: true
+
+  jpa:
+    show-sql: true
+    database: mysql
+    properties:
+      hibernate:
+        '[format_sql]': true
+        hbm2ddl:
+          auto: update
+    hibernate:
+      ddl-auto: update
