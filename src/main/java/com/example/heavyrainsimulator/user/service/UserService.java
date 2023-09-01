@@ -16,9 +16,11 @@ public class UserService {
    }
 
     public User registerUser(String userNickname) {
-        User existingUser = userRepository.findByUserNickname(userNickname);
-        if (existingUser != null) {
 
+        User existingUser = userRepository.findByUserNickname(userNickname);
+
+        if (existingUser != null) {
+            throw new RuntimeException("중복된 닉네임");
         }
 
         User newUser = new User();
