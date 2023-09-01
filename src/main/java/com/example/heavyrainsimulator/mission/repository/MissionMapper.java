@@ -10,4 +10,6 @@ public interface MissionMapper {
 
     List<MissionEntity> failedMission();
 
+
+    void missionClear(List<Integer> missionClear);
 }

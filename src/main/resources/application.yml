@@ -10,7 +10,7 @@ spring:
       additional-paths: src/main/resources/**, src/main/java/**
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.35.157/missiondb
+    url: jdbc:mysql://172.16.16.131/mission
     username: mission
     password: mission
     hikari:
@@ -29,7 +29,5 @@ spring:
     hibernate:
       ddl-auto: update
 
-  mybatis:
-        type-aliases-package: com.example.heavyrainsimulator.mission.entity
-        mapper-locations: config/mybatis/mapper/*.xml
-        config: config/mybatis/mybatis-config.xml
+mybatis:
+  mapper-locations: classpath:/config/mybatis/mappers/*.xml

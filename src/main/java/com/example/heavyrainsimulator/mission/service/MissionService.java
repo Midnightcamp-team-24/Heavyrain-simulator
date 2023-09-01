@@ -23,24 +23,28 @@ public class MissionService {
         this.missionMapper = missionMapper;
     }
 
+
     public List<String> findAllMission(){
         List<MissionEntity> AllEntityMission = new ArrayList<>(missionRepository.findAll());
         List<String> AllMission = new ArrayList<>();
-        for(int i = 0; i < AllEntityMission.size() - 1; i++){
+        for(int i = 0; i < AllEntityMission.size(); i++){
             AllMission.add(AllEntityMission.get(i).getMissionName());
         }
         return AllMission;
     }
 
     public List<String> findFailedMission(){
-        List<MissionEntity> AllEntityMission = new ArrayList<>(missionMapper.failedMission());
-        List<String> failedMission = new ArrayList<>();
-        for (int i = 0; i < AllEntityMission.size() -1; i++){
-            failedMission.add(AllEntityMission.get(i).getMissionName());
+        List<MissionEntity> failedMission = new ArrayList<>(missionMapper.failedMission());
+        List<String> failedMissionName = new ArrayList<>();
+        for (int i = 0; i<failedMission.size(); i++){
+            failedMissionName.add(failedMission.get(i).getMissionName());
         }
-        return failedMission;
+        return failedMissionName;
     }
 
+    public void missionClear(List<Integer> missionClear){
+        missionMapper.missionClear(missionClear);
+    }
 
 
 

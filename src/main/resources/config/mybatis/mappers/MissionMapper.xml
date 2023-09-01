@@ -3,17 +3,29 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.heavyrainsimulator.mission.repository.MissionMapper">
+
     <resultMap id="missionResultMap" type="com.example.heavyrainsimulator.mission.entity.MissionEntity" autoMapping="false">
-        <result property="missionNo" column="mission_no"/>
+        <id property="missionNo" column="mission_no"/>
         <result property="missionName" column="mission_name"/>
         <result property="missionClear" column="mission_clear"/>
     </resultMap>
 
-        <select id="failedMission" resultMap="missionResultMap" parameterType="String">
+        <select id="failedMission" resultMap="missionResultMap">
             SELECT
                 MISSION_NAME
             FROM TBL_MISSION
-            WHERE MISSION_CLEAR = false
+            WHERE MISSION_CLEAR = FALSE
         </select>
+
+        <update id="missionClear" parameterType="Map">
+            UPDATE
+                TBL_MISSION
+            SET
+                MISSION_CLEAR = TRUE
+            WHERE MISSION_NO IN
+            <foreach item="MISSION_NO" collection="list" open="(" separator="," close=")">
+                #{MISSION_NO}
+            </foreach>
+        </update>
 
 </mapper>
